@@ -1,0 +1,29 @@
+{% extends 'basedatatable.html.twig' %}
+
+{% block title %} {{ element }} List {% endblock %}
+
+{% block body %}
+
+<div class="content" style="border:solid 2px #007bff;padding:2%;margin:1%;border-radius:8px">
+    <h1> {{ element }} List </h1>
+    {% if product is defined %}
+        {% if(product | length > 0 ) %}
+            <div class="alert alert-danger" role="alert">
+                {% set listProduct = "" %}
+                {% for pr in product %}
+                    {% if(listProduct=="") %}
+                        {% set listProduct=pr.Designation %}
+                    {% else %}
+                        {% set listProduct=listProduct ~ "," ~ pr.Designation %}
+                    {% endif %}
+                {% endfor %}
+    
+            You have products linked to this {{ element }}:<b> {{  listProduct }} </b>
+    
+            </div>
+        {% endif %}
+    {% endif %}
+    <!-- Insert this where you want the table to appear -->
+    <div id="presidents">Loading...</div>
+</div>
+{% endblock %}

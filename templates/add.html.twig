@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{typeform}}  {{element}}{% endblock %}
+
+{% block body %}
+
+    <div class="content" style="border:solid 2px #007bff;padding:2%;margin:1%;border-radius:8px">
+        <h1>{{typeform}} {{element}} </h1>
+        {% for message in app.flashes('notice') %}
+            <div class="flash-notice" style="color:green;font-weight:bold">
+            {{ message }}
+            </div>
+        {% endfor %}
+        <div class="form-group">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        {{ form_end(form) }} 
+    </div>
+{% endblock %}
